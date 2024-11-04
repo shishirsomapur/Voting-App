@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 @Repository
@@ -94,6 +95,32 @@ public class VoteDAOImpl implements VoteDAO {
         log.info("The candidates and the votes with respect to them are " + voteMapJson);
 
         return voteMapJson;
+    }
 
+    @Override
+    public String getWinner() {
+
+        String candidateName = null;
+        int maxVotes = -1;
+
+        if(voteMap.isEmpty()) {
+
+            log.info("No candidates are present in the voting list.");
+
+            return "No candidates are present in the voting list.";
+        }
+
+        log.info("Request received from VoteService to get the candidate with the largest votes");
+
+        for(Map.Entry<String, Integer> entry : voteMap.entrySet()) {
+            if(entry.getValue() > maxVotes) {
+                maxVotes = entry.getValue();
+                candidateName = entry.getKey();
+            }
+        }
+
+        log.info("Got the name of the candidate with the largest votes: " + candidateName);
+
+        return candidateName;
     }
 }

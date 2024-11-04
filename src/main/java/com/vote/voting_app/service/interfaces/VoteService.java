@@ -9,4 +9,6 @@ public interface VoteService {
     int countVote(String name);
 
     String listVote();
+
+    String getWinner();
 }

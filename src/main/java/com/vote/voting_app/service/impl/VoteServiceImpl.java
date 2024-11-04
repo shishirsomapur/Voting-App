@@ -69,4 +69,18 @@ public class VoteServiceImpl implements VoteService {
 
         return candidateVotes;
     }
+
+    @Override
+    public String getWinner() {
+
+        log.info("Request received to get the candidate with the largest number of votes");
+
+        log.info("calling VoteDAO to get the candidate with the largest number of votes ");
+
+        String candidateName = voteDAO.getWinner();
+
+        log.info("Got the name of the candidate with the largest votes from voteDAO: " + candidateName);
+
+        return candidateName;
+    }
 }

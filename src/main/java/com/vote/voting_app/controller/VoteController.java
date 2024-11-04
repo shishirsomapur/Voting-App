@@ -71,4 +71,18 @@ public class VoteController {
 
         return candidateVotes;
     }
+
+    @GetMapping("/getwinner")
+    public String getWinner() {
+
+        log.info("Request received to get the candidate with the largest number of votes");
+
+        log.info("calling VoteService to get the candidate with the largest number of votes");
+
+        String candidateName = voteService.getWinner();
+
+        log.info("Got the name of the candidate with the largest votes from voteService: " + candidateName);
+
+        return candidateName;
+    }
 }
