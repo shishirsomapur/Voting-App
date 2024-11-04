@@ -74,4 +74,26 @@ public class VoteDAOImpl implements VoteDAO {
 
         return voteMap.get(name);
     }
+
+    @Override
+    public String listVote() {
+
+        String voteMapJson;
+
+        log.info("Request received from VoteService to get all the candidates and the votes with respect to them ");
+
+        if(voteMap.isEmpty()) {
+
+            log.info("No candidates are present in the voting list.");
+
+            return "No candidates are present in the voting list.";
+        }
+
+        voteMapJson = gson.toJson(voteMap);
+
+        log.info("The candidates and the votes with respect to them are " + voteMapJson);
+
+        return voteMapJson;
+
+    }
 }

@@ -7,4 +7,6 @@ public interface VoteService {
     int castVote(String name);
 
     int countVote(String name);
+
+    String listVote();
 }

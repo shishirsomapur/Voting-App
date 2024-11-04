@@ -8,4 +8,5 @@ public interface VoteDAO {
 
     int countVote(String name);
 
+    String listVote();
 }

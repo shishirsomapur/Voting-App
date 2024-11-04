@@ -60,4 +60,18 @@ public class VoteController {
 
         return currentCount;
     }
+
+    @GetMapping("/listvote")
+    public String listVote() {
+
+        log.info("Request received to get all the candidates and the votes with respect to them");
+
+        log.info("calling VoteService to get all the candidates and the votes with respect to them");
+
+        String candidateVotes = voteService.listVote();
+
+        log.info("Received the candidates and the votes with respect to them from VoteService: {}", candidateVotes);
+
+        return candidateVotes;
+    }
 }
