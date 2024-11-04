@@ -60,4 +60,18 @@ public class VoteDAOImpl implements VoteDAO {
 
     }
 
+    @Override
+    public int countVote(String name) {
+
+        log.info("Request received from VoteService to count vote for the candidate: " + name);
+
+        if(!voteMap.containsKey(name)) {
+
+            throw new CandidateNotFoundException(VotingErrorEnum.CANDIDATE_NOT_FOUND);
+        }
+
+        log.info("The number of votes for the candidate " + name + " is " + voteMap.get(name) );
+
+        return voteMap.get(name);
+    }
 }

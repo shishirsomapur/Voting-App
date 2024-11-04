@@ -46,4 +46,18 @@ public class VoteController {
 
         return currentCount;
     }
+
+    @GetMapping("/countvote")
+    public int countVote(@RequestParam String name) {
+
+        log.info("Request received to count vote for the candidate: " + name);
+
+        log.info("calling VoteService to count vote for the candidate: " + name);
+
+        int currentCount = voteService.countVote(name);
+
+        log.info("Received response from VoteService " + currentCount);
+
+        return currentCount;
+    }
 }
