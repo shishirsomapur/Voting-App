@@ -2,7 +2,7 @@ package com.vote.voting_app.DAO.impl;
 
 import com.google.gson.Gson;
 import com.vote.voting_app.DAO.interfaces.VoteDAO;
-import com.vote.voting_app.constant.VotingErrorEnum;
+import com.vote.voting_app.constant.ErrorCodeEnum;
 import com.vote.voting_app.exception.CandidateNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -50,7 +50,7 @@ public class VoteDAOImpl implements VoteDAO {
 
         if(!voteMap.containsKey(name)) {
 
-            throw new CandidateNotFoundException(VotingErrorEnum.CANDIDATE_NOT_FOUND);
+            throw new CandidateNotFoundException(ErrorCodeEnum.CANDIDATE_NOT_FOUND);
         }
 
         voteMap.put(name, voteMap.get(name) + 1);
@@ -68,7 +68,7 @@ public class VoteDAOImpl implements VoteDAO {
 
         if(!voteMap.containsKey(name)) {
 
-            throw new CandidateNotFoundException(VotingErrorEnum.CANDIDATE_NOT_FOUND);
+            throw new CandidateNotFoundException(ErrorCodeEnum.CANDIDATE_NOT_FOUND);
         }
 
         log.info("The number of votes for the candidate " + name + " is " + voteMap.get(name) );
