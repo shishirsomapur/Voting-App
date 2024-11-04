@@ -2,6 +2,8 @@ package com.vote.voting_app.DAO.impl;
 
 import com.google.gson.Gson;
 import com.vote.voting_app.DAO.interfaces.VoteDAO;
+import com.vote.voting_app.constant.VotingErrorEnum;
+import com.vote.voting_app.exception.CandidateNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
@@ -37,6 +39,24 @@ public class VoteDAOImpl implements VoteDAO {
         log.info("Added the candidate successfully: " + name + " with initial vote count of " + voteMap.get(name));
 
         return "Added the candidate successfully: " + name + " with initial vote count of " + voteMap.get(name);
+
+    }
+
+    @Override
+    public int castVote(String name) {
+
+        log.info("Request received from VoteService to cast vote for a candidate: " + name);
+
+        if(!voteMap.containsKey(name)) {
+
+            throw new CandidateNotFoundException(VotingErrorEnum.CANDIDATE_NOT_FOUND);
+        }
+
+        voteMap.put(name, voteMap.get(name) + 1);
+
+        log.info("Casted vote for the candidate " + name + " and his current count is " + voteMap.get(name));
+
+        return voteMap.get(name);
 
     }
 

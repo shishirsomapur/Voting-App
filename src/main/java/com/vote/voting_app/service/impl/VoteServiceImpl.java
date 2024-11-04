@@ -27,4 +27,18 @@ public class VoteServiceImpl implements VoteService {
 
         return enterCandidateResponse;
     }
+
+    @Override
+    public int castVote(String name) {
+
+        log.info("Request received from VoteController to cast vote for a candidate: " + name);
+
+        log.info("calling VoteDAO to cast vote for a candidate: " + name);
+
+        int currentCount = voteDAO.castVote(name);
+
+        log.info("Received response from VoteDAO " + currentCount);
+
+        return currentCount;
+    }
 }
