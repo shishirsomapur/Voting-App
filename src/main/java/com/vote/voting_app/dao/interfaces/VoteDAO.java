@@ -1,4 +1,4 @@
-package com.vote.voting_app.DAO.interfaces;
+package com.vote.voting_app.dao.interfaces;
 
 public interface VoteDAO {
 

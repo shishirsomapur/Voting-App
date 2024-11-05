@@ -1,7 +1,7 @@
-package com.vote.voting_app.DAO.impl;
+package com.vote.voting_app.dao.impl;
 
 import com.google.gson.Gson;
-import com.vote.voting_app.DAO.interfaces.VoteDAO;
+import com.vote.voting_app.dao.interfaces.VoteDAO;
 import com.vote.voting_app.constant.ErrorCodeEnum;
 import com.vote.voting_app.exception.CandidateNotFoundException;
 import lombok.extern.slf4j.Slf4j;

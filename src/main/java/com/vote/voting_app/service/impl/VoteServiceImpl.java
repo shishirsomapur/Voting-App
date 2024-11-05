@@ -1,6 +1,6 @@
 package com.vote.voting_app.service.impl;
 
-import com.vote.voting_app.DAO.interfaces.VoteDAO;
+import com.vote.voting_app.dao.interfaces.VoteDAO;
 import com.vote.voting_app.service.interfaces.VoteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
