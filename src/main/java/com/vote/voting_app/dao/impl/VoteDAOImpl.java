@@ -24,7 +24,7 @@ public class VoteDAOImpl implements VoteDAO {
     }
 
     @Override
-    public String enterCandidate(String name) {
+    public synchronized String enterCandidate(String name) {
 
         log.info("Request received from VoteService to enter a candidate: " + name);
 
