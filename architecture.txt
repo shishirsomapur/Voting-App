@@ -1,0 +1,40 @@
+Voting Application Architecture and Design Documentation
+
+1. Overview
+   The Voting Application is designed to provide a simple, concurrent voting system using RESTful APIs. It allows users to enter candidates, cast votes, count votes, list candidates and their vote counts, and determine the winner. The application is built using Java and leverages local variables to store candidate and vote data.
+
+2. Architecture
+   The architecture follows a layered approach with the following key components:
+
+   - **Controller Layer**: This layer handles HTTP requests and responses, providing a RESTful API interface for users to interact with the application. It processes incoming API calls and routes them to the appropriate service methods.
+
+   - **Service Layer**: This layer contains the business logic of the application. It acts as an intermediary between the controller layer and the data access layer, coordinating operations such as adding candidates, casting votes, and retrieving vote counts. It ensures that business rules are applied consistently across the application.
+
+   - **Data Access Layer**: This layer is responsible for managing the in-memory data storage. It uses local variables to maintain the list of candidates and their vote counts. This layer abstracts the data management operations, such as adding candidates and updating vote counts.
+
+3. Design
+   The application employs the following design principles:
+
+   - **Single Responsibility Principle**: Each class in the application has a single responsibility, making it easier to maintain and test. For example, the `VoteDAOImpl` class handles all operations related to candidate management and voting logic.
+
+   - **Dependency Injection**: The application uses dependency injection to manage dependencies between classes. The `Gson` library is injected into the `VoteDAOImpl` class to facilitate JSON serialization and deserialization.
+
+   - **Error Handling**: The application includes custom exceptions, such as `CandidateNotFoundException`, to handle errors gracefully and provide meaningful feedback to users.
+
+   - **Concurrency**: The application is designed to handle concurrent requests, allowing multiple users to interact with the system simultaneously. The use of local variables for data storage ensures that vote counts are updated correctly in a multi-user environment.
+
+4. API Endpoints
+   The following RESTful API endpoints are available in the application:
+
+   - `POST /enterCandidate`: Adds a new candidate.
+   - `POST /castVote`: Casts a vote for a specified candidate.
+   - `GET /countVote`: Retrieves the vote count for a specified candidate.
+   - `GET /listVotes`: Returns a JSON representation of all candidates and their vote counts.
+   - `GET /getWinner`: Returns the name of the candidate with the highest number of votes.
+
+5. Unit Testing
+   Unit tests are implemented using JUnit and Mockito to verify the functionality of the application. Each feature is tested to ensure that it behaves as expected under various scenarios, including success and error cases.
+
+6. Conclusion
+   The Voting Application is a simple yet effective demonstration of how to manage a voting system using RESTful APIs. Its architecture emphasizes maintainability, testability, and concurrent access, making it suitable for real-world applications.
+
